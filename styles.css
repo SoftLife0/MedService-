@@ -20,6 +20,14 @@
   background-size: cover;
   position: relative;
 }
+.form-page {
+  width: 100%;
+  height: 85vh;
+  position: relative;
+  background: url("image/banner.jpg") top center;
+  background-size: cover;
+  position: relative;
+}
 .pill-button {
   background-color: #00a3c8;
   font: 'Poppins',sans-serif;
@@ -449,3 +457,5 @@ mark {
 .dark-color {
     color: #20247b;
 }
+
+
