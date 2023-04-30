@@ -3,21 +3,43 @@
 
 
 <section class="form-page">
-    <div class="container" style="margin: auto;">
-        <h3 class="" style="color: #fff;">Book an Appointment</h3>
-        <h6>Kindly fill-in this form</h6>
-        <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="floatingInput" placeholder="name">
-          <label for="floatingInput">Full Name</label>
-        </div>
-        <div class="form-floating mb-3">
-          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-          <label for="floatingInput">Email address</label>
-        </div>
-        <div class="form-floating">
-          <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-          <label for="floatingPassword">Password</label>
-        </div>
+    <div class="container" style="margin: auto; padding-bottom: 3vh;">
+        <h3 class="" style="color: #fff; font-weight: 600;">Book an Appointment</h3>
+        <h6 style="color: #fff;">Kindly fill-in this form</h6>
+        <br>
+        <form action="" method="POST">
+          {{form.hidden_tag()}}      
+
+          <div class="form-floating mb-3">
+            {{form.visit (class="form-control webForm", placeholder="Enter")}} 
+            {{form.visit.label}}
+          </div>
+          <div class="form-floating mb-3">
+            {{form.doctor (class="form-control webForm", placeholder="Enter")}} 
+            {{form.doctor.label}}
+          </div>
+          <div class="form-floating mb-3">
+              {{form.date (class="form-control webForm", placeholder="Enter")}} 
+              {{form.date.label}}
+          </div>
+          <div class="form-floating mb-3">
+            {{form.name (class="form-control webForm", placeholder="Enter")}} 
+            {{form.name.label}}
+          </div>
+          <div class="form-floating mb-3">
+              {{form.email (class="form-control webForm", placeholder="Enter")}} 
+              {{form.email.label}}
+          </div>
+          <div class="form-floating mb-3">
+              {{form.contact (class="form-control webForm", placeholder="Enter")}} 
+              {{form.contact.label}}
+          </div>   
+          
+          <br><br>
+
+          {{form.submit (class="pill-button", style="width:100%") }}
+      
+        </form>
             
             
     </div>

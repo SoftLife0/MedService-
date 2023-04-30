@@ -1,6 +1,10 @@
 from flask import Flask,redirect,url_for,render_template,request
 import os
 from form import *
+from email.message import EmailMessage
+import smtplib
+import requests
+import datetime
 
 app=Flask(__name__)
 
@@ -25,14 +29,54 @@ def doctor():
 def profile():
     return render_template('profile.html')
 
-@app.route('/form')
-def form():
+@app.route('/success')
+def success():
+    return render_template('success.html')
+
+def sendMail(recipient, email):
+    sender_email = 'pay@prestoghana.com'
+    receiver_email  = recipient
+    smtp_server = 'mail.privateemail.com'
+    port = 465
+    login = 'pay@prestoghana.com'
+    password = 'Babebabe123$'
+
+    message = EmailMessage()
+    message["Subject"] = "Appointment Confirmation"
+    message["From"] = f"MedService <{sender_email}>"
+    message["To"] = receiver_email
+ 
+    # content = "Hello world"
+    msg = email
+    message.set_content(msg, subtype='html')
+
+    server = smtplib.SMTP_SSL(smtp_server, port)
+    server.login(login, password)
+    server.send_message(message)
+    server.quit()
+    # sendsms('0556034340', msg)
+    return "Done!"
+
+@app.route('/form', methods=['GET','POST'])
+def patientform():
     form=BookingForm()
+    print(request.method)
     # check request method
     if request.method=='POST':
-        if form.validate_on_submit:
-            print(form.email.data)
-        return redirect(url_for('index'))
+        if form.validate_on_submit():
+            print("vali")
+            
+            print(form.name.data)
+            msg = "Dear " + form.name.data + ",\nI hope this email finds you well. This is to confirm your appointment with Dr." + form.doctor.data + " on " + str(form.date.data) + ".\nIf you have any questions or concerns regarding your appointment, please do not hesitate to contact us at info@medservice.com via email.\nWe look forward to seeing you soon!\nSincerely,\n" + form.doctor.data 
+            # email = 'onikosiadewale18@gmail.com'
+            print(msg)
+            try:
+                sendMail(form.email.data, msg)
+            except Exception as e:
+                print(e)
+            return redirect(url_for('success'))
+        else:
+            print(form.errors)
     # check form validation
     # check errors
     return render_template('form.html', form=form)
