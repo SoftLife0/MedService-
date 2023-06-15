@@ -25,9 +25,25 @@ def home():
 def doctor():
     return render_template('doctor.html')
 
-@app.route('/profile')
-def profile():
-    return render_template('profile.html')
+@app.route('/profile2')
+def profile2():
+    return render_template('profile2.html')
+
+@app.route('/profile3')
+def profile3():
+    return render_template('profile3.html')
+
+@app.route('/profile4')
+def profile4():
+    return render_template('profile4.html')
+
+@app.route('/profile5')
+def profile5():
+    return render_template('profile5.html')
+
+@app.route('/profile6')
+def profile6():
+    return render_template('profile6.html')
 
 @app.route('/success')
 def success():
