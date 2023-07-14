@@ -25,6 +25,10 @@ def home():
 def doctor():
     return render_template('doctor.html')
 
+@app.route('/profile')
+def profile():
+    return render_template('profile.html')
+
 @app.route('/profile2')
 def profile2():
     return render_template('profile2.html')
