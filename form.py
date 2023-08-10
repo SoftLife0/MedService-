@@ -11,4 +11,4 @@ class BookingForm(FlaskForm):
     email = StringField('Enter Your E-mail', validators=[DataRequired()])
     contact = IntegerField('Enter Your Phone Number', validators=[DataRequired()])
     # text = StringField('Your Message', widget=TextArea(), validators=[DataRequired()])
-    submit = SubmitField('Next')
+    submit = SubmitField('Submit')
